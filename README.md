@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # locate_me
 
 A new Flutter project.
@@ -14,3 +15,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Locate-me
+
+- Location-based services app in  Flutter with embedded Map functionality.
+
+#
+>>>>>>> 4a4efa44cf79b4ce5da520a5ea99f4e8166ca38a
