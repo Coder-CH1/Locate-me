@@ -16,8 +16,8 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             SizedBox(
-              height: 50,
-              width: MediaQuery.of(context).size.width/2,
+              height: 40,
+              width: MediaQuery.of(context).size.width/0.2,
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
                   prefixIcon: const Icon(Icons.search),
                   prefixIconColor: Colors.blueAccent,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
                   )
                 ),
