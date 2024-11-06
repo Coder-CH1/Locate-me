@@ -17,14 +17,14 @@ class _HomeState extends State<Home> {
           children: [
             SizedBox(
               height: 50,
-              width: 300,
+              width: MediaQuery.of(context).size.width/2,
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.black12,
                   hintText: 'Search places',
                   prefixIcon: const Icon(Icons.search),
-                  prefixIconColor: Colors.red,
+                  prefixIconColor: Colors.blueAccent,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: BorderSide.none,
