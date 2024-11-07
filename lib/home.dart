@@ -12,19 +12,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late final TextEditingController _controller;
+  late final MapController _mapController;
   LatLng _currentLocation = const LatLng(9.0820, 8.6753);
-  final String _searchQuery = '';
   double _zoom = 6.0;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController();
+    _mapController = MapController();
   }
 
   Future<void> _searchPlace() async {
     final place = _controller.text.trim();
-    if (_searchQuery.isEmpty) return;
+    if (place.isEmpty) return;
 
     try {
      List<Location> locations = await locationFromAddress(place);
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
          _currentLocation = LatLng(location.latitude, location.longitude);
          _zoom = 14.0;
        });
+       _mapController.move(_currentLocation, _zoom);
      }
     } catch (e) {
       throw Exception(Text('Error searching for place $e'));
@@ -54,9 +56,8 @@ class _HomeState extends State<Home> {
                 width: MediaQuery.of(context).size.width/0.2,
                 child: TextField(
                   controller: _controller,
-                  onSubmitted: (value) {
-                    _searchPlace();
-                  },
+                  onSubmitted: (value) =>
+                    _searchPlace(),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.black12,
@@ -75,6 +76,7 @@ class _HomeState extends State<Home> {
              Expanded(
                 child:
                 FlutterMap(
+                  mapController: _mapController,
                   options: MapOptions(
                   initialCenter: _currentLocation,
                     initialZoom: _zoom,
