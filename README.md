@@ -1,6 +1,12 @@
 
 # Locate_me
 
-- Location-based services app in Flutter with embedded Map package functionality.
+- A location-based services app in Flutter for Nigeria.
+
+## Packages Used:
+ 
+ - Flutter Map
+ - Geocoder
+ - Lat Long
 
 #
