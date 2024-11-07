@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +14,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late final TextEditingController _controller;
   LatLng _currentLocation = const LatLng(9.0820, 8.6753);
-  String _searchQuery = '';
+  final String _searchQuery = '';
+  double _zoom = 6.0;
 
   @override
   void initState() {
@@ -20,6 +23,24 @@ class _HomeState extends State<Home> {
     _controller = TextEditingController();
   }
 
+  Future<void> _searchPlace(String place) async {
+    if (_searchQuery.isEmpty) return;
+
+    try {
+     List<Location> locations = await locationFromAddress(place);
+     if (locations.isNotEmpty) {
+       final location = locations.first;
+       setState(() {
+         _currentLocation = LatLng(location.latitude, location.longitude);
+         _zoom = 14.0;
+       });
+     }
+    } catch (e) {
+
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -33,6 +54,9 @@ class _HomeState extends State<Home> {
                 width: MediaQuery.of(context).size.width/0.2,
                 child: TextField(
                   controller: _controller,
+                  onSubmitted: (String value) {
+                    _searchPlace(value);
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.black12,
@@ -51,13 +75,24 @@ class _HomeState extends State<Home> {
              Expanded(
                 child:
                 FlutterMap(
-                  options: const MapOptions(),
+                  options: MapOptions(
+                  center: _currentLocation,
+                    zoom: _zoom,
+                  ),
                   children: [
                     TileLayer(
                       urlTemplate:
                       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                       userAgentPackageName: 'com.example.app',
                     ),
+                    MarkerLayer(
+                        markers: [
+                          Marker(
+                            point: _currentLocation,
+                            child: const Icon(Icons.pin_drop, color: Colors.red)
+                          )
+                        ]
+                    )
                   ],
                 ),
             ),
