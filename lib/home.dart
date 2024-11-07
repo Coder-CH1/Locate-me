@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
@@ -36,7 +35,7 @@ class _HomeState extends State<Home> {
        });
      }
     } catch (e) {
-
+      throw Exception(Text('Error searching for place $e'));
     }
   }
 
@@ -76,8 +75,8 @@ class _HomeState extends State<Home> {
                 child:
                 FlutterMap(
                   options: MapOptions(
-                  center: _currentLocation,
-                    zoom: _zoom,
+                  initialCenter: _currentLocation,
+                    initialZoom: _zoom,
                   ),
                   children: [
                     TileLayer(
