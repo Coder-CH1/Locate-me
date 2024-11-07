@@ -1,6 +1,6 @@
 
-# locate_me
+# Locate_me
 
-- Location-based services app in  Flutter with embedded Map package functionality.
+- Location-based services app in Flutter with embedded Map package functionality.
 
 #
