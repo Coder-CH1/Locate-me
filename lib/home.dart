@@ -22,7 +22,8 @@ class _HomeState extends State<Home> {
     _controller = TextEditingController();
   }
 
-  Future<void> _searchPlace(String place) async {
+  Future<void> _searchPlace() async {
+    final place = _controller.text.trim();
     if (_searchQuery.isEmpty) return;
 
     try {
@@ -53,8 +54,8 @@ class _HomeState extends State<Home> {
                 width: MediaQuery.of(context).size.width/0.2,
                 child: TextField(
                   controller: _controller,
-                  onSubmitted: (String value) {
-                    _searchPlace(value);
+                  onSubmitted: (value) {
+                    _searchPlace();
                   },
                   decoration: InputDecoration(
                     filled: true,
@@ -77,6 +78,8 @@ class _HomeState extends State<Home> {
                   options: MapOptions(
                   initialCenter: _currentLocation,
                     initialZoom: _zoom,
+                    maxZoom: 18.0,
+                    minZoom: 2.0,
                   ),
                   children: [
                     TileLayer(
