@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late final TextEditingController _controller;
   late final MapController _mapController;
-  LatLng _currentLocation = const LatLng(9.0820, 8.6753);
+  LatLng _currentLocation = const LatLng(9.0820, 8.6753);//default location
   double _zoom = 6.0;
 
   @override
