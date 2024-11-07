@@ -11,6 +11,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   open_street_map_search_and_pick: ^0.1.1
   flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:
