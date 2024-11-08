@@ -3,7 +3,7 @@
 
 - A location-based services app in Flutter for Nigeria.
 
-## Packages Used
+## Packages Used -
  
  - Flutter Map
  - Geocoder
