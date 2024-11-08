@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
-//import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,28 +60,6 @@ class _HomeState extends State<Home> {
     }
   }
 
-  // Future<void> _searchPlaceOnMap() async {
-  //   final result = Navigator.push(context,
-  //      MaterialPageRoute(builder:
-  //      (context) =>
-  //        OpenStreetMapSearchAndPick(
-  //          center: _currentLocation,
-  //          zoom: 6.0,
-  //          buttonColor: Colors.blueAccent,
-  //          onPicked: (pickedData) {
-  //          }
-  //        )
-  //      ),
-  //   );
-  //   if (result != null) {
-  //     setState(() {
-  //       _currentLocation = LatLng(result.latitude, result.longitude);
-  //       _zoom = 14.0;
-  //     });
-  //     _mapController.move(_currentLocation, _zoom);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,6 +82,16 @@ class _HomeState extends State<Home> {
                       hintText: 'Search places',
                       prefixIcon: const Icon(Icons.search),
                       prefixIconColor: Colors.blueAccent,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            _controller.clear();
+                            setState(() {
+                              _currentLocation = const LatLng(9.0820, 8.6753);
+                              _zoom = 6.0;
+                            });
+                            _mapController.move(_currentLocation, _zoom);
+                          },
+                          icon: const Icon(Icons.clear)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
