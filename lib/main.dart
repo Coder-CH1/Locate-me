@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
   late final MapController _mapController;
   LatLng _currentLocation = const LatLng(9.0820, 8.6753);//default location
   double _zoom = 6.0;
-  bool _isLoading = false;
+ // bool _isLoading = false;
 
   @override
   void initState() {
@@ -46,9 +46,9 @@ class _HomeState extends State<Home> {
     final place = _controller.text.trim();
     if (place.isEmpty) return;
 
-    setState(() {
-      _isLoading = true;
-    });
+    // setState(() {
+    //   _isLoading = true;
+    // });
     try {
       List<Location> locations = await locationFromAddress(place);
       if (locations.isNotEmpty) {
@@ -105,10 +105,10 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(height: 20),
-            if (_isLoading) ...[
-              const CircularProgressIndicator(),
-              const SizedBox(height: 20)
-            ],
+            // if (_isLoading) ...[
+            //   const CircularProgressIndicator(),
+            //   const SizedBox(height: 20)
+            // ],
             Expanded(
               child:
               FlutterMap(
