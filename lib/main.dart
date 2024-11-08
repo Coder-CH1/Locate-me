@@ -54,6 +54,8 @@ class _HomeState extends State<Home> {
           _zoom = 14.0;
         });
         _mapController.move(_currentLocation, _zoom);
+      } else {
+        throw Exception('Searched location not found');
       }
     } catch (e) {
       throw Exception(Text('Error searching for place $e'));
