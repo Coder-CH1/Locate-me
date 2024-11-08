@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
+//import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//HOME
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -58,6 +60,28 @@ class _HomeState extends State<Home> {
       throw Exception(Text('Error searching for place $e'));
     }
   }
+
+  // Future<void> _searchPlaceOnMap() async {
+  //   final result = Navigator.push(context,
+  //      MaterialPageRoute(builder:
+  //      (context) =>
+  //        OpenStreetMapSearchAndPick(
+  //          center: _currentLocation,
+  //          zoom: 6.0,
+  //          buttonColor: Colors.blueAccent,
+  //          onPicked: (pickedData) {
+  //          }
+  //        )
+  //      ),
+  //   );
+  //   if (result != null) {
+  //     setState(() {
+  //       _currentLocation = LatLng(result.latitude, result.longitude);
+  //       _zoom = 14.0;
+  //     });
+  //     _mapController.move(_currentLocation, _zoom);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
