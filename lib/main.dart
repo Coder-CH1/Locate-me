@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
                       fillColor: Colors.black12,
                       hintText: 'Search places',
                       prefixIcon: const Icon(Icons.search),
-                      prefixIconColor: Colors.blueAccent,
+                      prefixIconColor: Colors.black,
                       suffixIcon: IconButton(
                           onPressed: () {
                             _controller.clear();
