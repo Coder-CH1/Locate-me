@@ -35,12 +35,14 @@ class _HomeState extends State<Home> {
   double _zoom = 6.0;
 
   @override
+//Runs when the widget is created to prepare the controllers for later use
   void initState() {
     super.initState();
     _controller = TextEditingController();
     _mapController = MapController();
   }
 
+//Method searches a location based on the address the user enters
   Future<void> _searchPlace() async {
     final place = _controller.text.trim();
     if (place.isEmpty) return;
